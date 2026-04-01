@@ -66,4 +66,3 @@ def role_randomize(num_players, exclusions):
                 selected.remove(i)
         roles.remove(added)
     random.shuffle(selected)
-    printing(selected)

@@ -26,13 +26,28 @@ async def on_ready():
 @bot.command()
 async def test(ctx):
     await ctx.send('🤏 pp')
-    print("Good test")
+    print(f"{ctx.author}'s confidence shattered in {ctx.channel}")
 
 @bot.command()
-async def give_roles(ctx, num: int, *exclude: str):
-    role_randomize(num, exclude)
-    while user
-    users = [user async for user in reaction.users()]
+async def give_roles(ctx, *exclude: str):
+    print("roles distri")
+    #role_randomize(num, exclude)
+
+
+@bot.command()
+async def begone(ctx):
+    if ctx.author.id == 571322376491368477:
+        await ctx.send('booo 👎')
+        quit()
+    else:
+        await ctx.send(f'{ctx.author} is not worthy')
+
+@bot.command()
+async def reactest(ctx):
+    await ctx.send("React \"✅\" to join")
+    await ctx.reaction_add("✅")
+    tracked_message_id = ctx.id
+    async def on_reaction_add(reaction, user):
 
 
 bot.run(BOT_KEY)
