@@ -1,20 +1,30 @@
+import os
+from dotenv import load_dotenv
+from discord.ext import commands
 import discord
+
+load_dotenv()
+
+BOT_KEY = os.getenv('BOT_KEY')
 
 intents = discord.Intents.default()
 intents.message_content = True
+intents.members = True
+intents.dm_messages = True
 
-client = discord.Client(intents=intents)
+bot = commands.Bot(command_prefix='!', intents=intents)
 
-@client.event
+@bot.event
 async def on_ready():
-    print(f'We have logged in as {client.user}')
+    print(f'We have logged in as {bot.user}')
 
-@client.event
-async def on_message(message):
-    if message.author == client.user:
-        return
+@bot.command()
+async def test(ctx):
+    await ctx.send('🤏 pp')
+    print("Good test")
 
-    if message.content.startswith('$hello'):
-        await message.channel.send('Hello!')
+@bot.command()
+async def give_roles(ctx, num: int)
+    
 
-client.run()
+bot.run(BOT_KEY)
