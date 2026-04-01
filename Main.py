@@ -31,6 +31,8 @@ async def test(ctx):
 @bot.command()
 async def give_roles(ctx, num: int, *exclude: str):
     role_randomize(num, exclude)
+    while user
+    users = [user async for user in reaction.users()]
 
 
 bot.run(BOT_KEY)
