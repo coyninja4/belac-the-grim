@@ -1,10 +1,13 @@
 import random
 import os
 
-roles = ["King", "Sellsword", "Hunter", "Bodyguard", "Necromancer", "Twins", "Seer", "Villageidiot", "Glasscannon", "Warlord", "Maskedman", "Chaos", "Doppleganger"]
-rules = {"King":"Knight Assasin", "Twins":"Twin2"}
-selected = []
-loop = ""
+def initialize():
+    global roles 
+    global rules
+    global selected 
+    roles = ["King", "Sellsword", "Hunter", "Bodyguard", "Necromancer", "Twins", "Seer", "Villageidiot", "Glasscannon", "Warlord", "Maskedman", "Chaos", "Doppleganger"]
+    rules = {"King":"Knight Assasin", "Twins":"Twin2"}
+    selected = []
 
 #adding secondary roles
 def apply_rules(role):
@@ -33,9 +36,8 @@ def printing(selected):
     print(selected)
 
 #main function
-def role_randomize():
-    num_players = int(input("How many players: "))
-    exclusions = input("What roles would you like to exclude: ").split()
+def role_randomize(num_players, exclusions):
+    initialize()
     #handle exclusions
     for i in exclusions:
         #capitalize input list
@@ -65,16 +67,3 @@ def role_randomize():
         roles.remove(added)
     random.shuffle(selected)
     printing(selected)
-
-role_randomize()
-
-while loop != "Quit":
-    loop = input("Type 'Quit' to exit or type 'Again' to randomize again: ")
-    if loop == "Again":
-        selected.clear()
-        roles = ["King", "Sellsword", "Hunter", "Bodyguard", "Necromancer", "Twins", "Seer", "VillageIdiot", "Glasscannon", "Warlord", "Maskedman", "Chaos", "Doppleganger"]
-        role_randomize()
-    elif loop == "Quit":
-        break
-    else:
-        continue

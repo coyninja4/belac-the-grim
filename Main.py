@@ -3,6 +3,10 @@ from dotenv import load_dotenv
 from discord.ext import commands
 import discord
 
+import RoleRandomiser
+
+role_randomize = RoleRandomiser.role_randomize
+
 load_dotenv()
 
 BOT_KEY = os.getenv('BOT_KEY')
@@ -11,6 +15,7 @@ intents = discord.Intents.default()
 intents.message_content = True
 intents.members = True
 intents.dm_messages = True
+intents.reactions = True
 
 bot = commands.Bot(command_prefix='!', intents=intents)
 
@@ -24,7 +29,8 @@ async def test(ctx):
     print("Good test")
 
 @bot.command()
-async def give_roles(ctx, num: int)
-    
+async def give_roles(ctx, num: int, *exclude: str):
+    role_randomize(num, exclude)
+
 
 bot.run(BOT_KEY)
