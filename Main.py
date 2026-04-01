@@ -41,13 +41,20 @@ async def begone(ctx):
         quit()
     else:
         await ctx.send(f'{ctx.author} is not worthy')
-
+             
 @bot.command()
 async def reactest(ctx):
-    await ctx.send("React \"✅\" to join")
-    await ctx.reaction_add("✅")
-    tracked_message_id = ctx.id
-    async def on_reaction_add(reaction, user):
+    global queue 
+    queue = set()
+    msg = await ctx.send("React \"✅\" to join")
+    await msg.add_reaction("✅")
+    global tracked_message_id
+    tracked_message_id = msg.id
 
+@bot.event
+async def on_reaction_add(reaction, user):
+    if reaction.message.id == tracked_message_id:
+        queue.add([user.name, user.id])
+    print(queue)
 
 bot.run(BOT_KEY)
