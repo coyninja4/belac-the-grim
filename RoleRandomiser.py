@@ -36,13 +36,16 @@ def printing(selected):
     print(selected)
 
 #main function
-def role_randomize(num_players, exclusions):
+def role_randomize(num_players, exclusions=None):
     initialize()
     #handle exclusions
-    for i in exclusions:
-        #capitalize input list
-        i = i.capitalize()
-        roles.remove(i)
+    try:
+        for i in exclusions:
+            #capitalize input list
+            i = i.capitalize()
+            roles.remove(i)
+    except(TypeError):
+        pass
     #guarantee multiple roles for maskedman 
     if num_players + 2 >= len(roles):
         try:

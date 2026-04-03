@@ -44,17 +44,29 @@ async def begone(ctx):
              
 @bot.command()
 async def reactest(ctx):
-    global queue 
-    queue = set()
-    msg = await ctx.send("React \"✅\" to join")
-    await msg.add_reaction("✅")
+    msg = await ctx.send("React \"✅\" to join. React \"❌\" to leave queue.\nReact \"🃏\"")
     global tracked_message_id
     tracked_message_id = msg.id
+    await msg.add_reaction("✅")
+    await msg.add_reaction("❌")
+    await msg.add_reaction("🃏")
+    global queue 
+    queue = set()
+
+@bot.command()
+async def exconfig(ctx):
+    global exclusions
+    exclusions = []
 
 @bot.event
 async def on_reaction_add(reaction, user):
     if reaction.message.id == tracked_message_id:
-        queue.add([user.name, user.id])
+        if reaction.emoji == "✅":
+            queue.add(user.name)
+        elif reaction.emoji == "🃏":
+            role_randomize(len(queue), exclusions)
+        else:
+            pass
     print(queue)
 
 bot.run(BOT_KEY)
