@@ -30,9 +30,14 @@ async def test(ctx):
 
 @bot.command()
 async def give_roles(ctx, *exclude: str):
-    print("roles distri")
-    #role_randomize(num, exclude)
-
+    global queue 
+    queue = set()
+    msg = await ctx.send(f"Game starting with exclusions: {exclude}\nReact \"✅\" to join. React \"❌\" to leave queue.\nReact \"🃏\" to start game.")
+    global tracked_message_id
+    tracked_message_id = msg.id
+    await msg.add_reaction("✅")
+    await msg.add_reaction("❌")
+    await msg.add_reaction("🃏")
 
 @bot.command()
 async def begone(ctx):
@@ -41,30 +46,23 @@ async def begone(ctx):
         quit()
     else:
         await ctx.send(f'{ctx.author} is not worthy')
-             
-@bot.command()
-async def reactest(ctx):
-    msg = await ctx.send("React \"✅\" to join. React \"❌\" to leave queue.\nReact \"🃏\"")
-    global tracked_message_id
-    tracked_message_id = msg.id
-    await msg.add_reaction("✅")
-    await msg.add_reaction("❌")
-    await msg.add_reaction("🃏")
-    global queue 
-    queue = set()
-
-@bot.command()
-async def exconfig(ctx):
-    global exclusions
-    exclusions = []
 
 @bot.event
 async def on_reaction_add(reaction, user):
-    if reaction.message.id == tracked_message_id:
+    global tracked_message_id
+    if reaction.message.id == tracked_message_id and user.id != 1488281701867065395:
         if reaction.emoji == "✅":
             queue.add(user.name)
+        elif reaction.emoji == "❌":
+            try:
+                queue.remove(user.name)
+            except(KeyError):
+                pass
         elif reaction.emoji == "🃏":
-            role_randomize(len(queue), exclusions)
+            #role_randomize(len(queue), exclusions)
+            print("hi")
+            tracked_message_id = None
+            pass
         else:
             pass
     print(queue)
