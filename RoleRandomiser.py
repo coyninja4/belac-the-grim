@@ -5,7 +5,9 @@ def initialize():
     global roles 
     global rules
     global selected 
-    roles = ["King", "Sellsword", "Hunter", "Bodyguard", "Necromancer", "Twins", "Seer", "Villageidiot", "Glasscannon", "Warlord", "Maskedman", "Chaos", "Doppleganger"]
+    roles = ["King", "Knight", "Assasin", "Sellsword", "Hunter", "Bodyguard", "Necromancer",
+              "Twins", "Seer", "Villageidiot", "Glasscannon", "Warlord",
+                "Maskedman", "Chaos", "Doppleganger"]
     rules = {"King":"Knight Assasin", "Twins":"Twin2"}
     selected = []
 
@@ -20,20 +22,11 @@ def apply_rules(role):
             ruled.append(i)
     return ruled
 
-#output function
-def printing(selected):
-    for i in selected:
-        input("Player role is:")
-        print(i)
-        #display choices for maskedman
-        if i == "Maskedman":
-            print(f"\nChoose new role:")
-            for j in roles:
-                print(j)
-        input("Press enter and pass...")
-        os.system('cls' if os.name == 'nt' else 'clear')
-    random.shuffle(selected)
-    print(selected)
+#display choices for maskedman (implement)
+# if i == "Maskedman":
+#     print(f"\nChoose new role:")
+#     for j in roles:
+#         print(j)
 
 #main function
 def role_randomize(num_players, exclusions=None):
@@ -43,8 +36,12 @@ def role_randomize(num_players, exclusions=None):
         for i in exclusions:
             #capitalize input list
             i = i.capitalize()
+            if i in rules:
+                param = rules[i].split()
+                for j in param:
+                    roles.remove(j)
             roles.remove(i)
-    except(TypeError):
+    except:
         pass
     #guarantee multiple roles for maskedman 
     if num_players + 2 >= len(roles):
