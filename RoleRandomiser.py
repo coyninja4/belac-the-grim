@@ -20,6 +20,10 @@ def apply_rules(role):
         for i in param:
             selected.append(i)
             ruled.append(i)
+            try:
+                roles.remove(i)
+            except:
+                pass
     return ruled
 
 #display choices for maskedman (implement)
