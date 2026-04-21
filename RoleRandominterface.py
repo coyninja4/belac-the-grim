@@ -1,17 +1,32 @@
 import random
-import os
+import json
 
-def initialize():
-    global roles 
-    global rules
-    global selected 
-    roles = ["King", "Knight", "Assasin", "Sellsword", "Hunter", "Bodyguard", "Necromancer",
-              "Twins", "Seer", "Villageidiot", "Glasscannon", "Warlord",
-                "Maskedman", "Chaos", "Doppleganger"]
-    rules = {"King":"Knight Assasin", "Twins":"Twin2"}
-    selected = []
+with open('games-config.json', 'r') as f:
+    JSON = json.load(f)
+
+def start_game(queue, roles_config, exclusions=None):
+    try:
+        global roles
+        global rules
+        global selected 
+        roles_list = JSON["games"][roles_config]
+        roles = list()
+        for i in roles_list:
+            roles.append(i['name'])
+        rules = {}
+        selected = []
+    except KeyError:
+        print(KeyError)
+    except NameError:
+        print(NameError)
+    except Exception as e:
+        print(e)
+    role_randomize(len(queue), exclusions)
+
+start_game(5, "commander-roles")
 
 #adding secondary roles
+#change this function to account for command style entries in the rules section of the json structure(ex.maskedman)
 def apply_rules(role):
     #list for removing roles if to many are added
     ruled = []
@@ -26,6 +41,9 @@ def apply_rules(role):
                 pass
     return ruled
 
+def distribute(selected):
+
+
 #display choices for maskedman (implement)
 # if i == "Maskedman":
 #     print(f"\nChoose new role:")
@@ -33,8 +51,7 @@ def apply_rules(role):
 #         print(j)
 
 #main function
-def role_randomize(num_players, exclusions=None):
-    initialize()
+def role_randomize(num_players, exclusions):
     #handle exclusions
     try:
         for i in exclusions:

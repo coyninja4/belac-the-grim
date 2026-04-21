@@ -3,9 +3,9 @@ from dotenv import load_dotenv
 from discord.ext import commands
 import discord
 
-import RoleRandomiser
+import RoleRandominterface
 
-role_randomize = RoleRandomiser.role_randomize
+RRI = RoleRandominterface
 
 load_dotenv()
 
@@ -16,6 +16,7 @@ intents.message_content = True
 intents.members = True
 intents.dm_messages = True
 intents.reactions = True
+global queue
 
 bot = commands.Bot(command_prefix='!', intents=intents)
 
@@ -29,14 +30,18 @@ async def test(ctx):
     print(f"{ctx.author}'s confidence shattered in {ctx.channel}")
 
 @bot.command()
-async def open_queue(ctx, *exclude):
+async def open_queue(ctx):
     global queue
     queue = set()
-    msg = await ctx.send(f"Game starting with exclusions: {exclude}\nReact \"✅\" to join. Remove reaction to leave queue.\nType !game_start to start game.")
+    msg = await ctx.send(f"React \"✅\" to join. Remove reaction to leave queue.\nType !game_start to start game.")
     global tracked_message_id
     tracked_message_id = msg.id
     await msg.add_reaction("✅")
 
+@bot.command()
+async def game_start(ctx, game, exclusions*):
+    RRI.start_game(queue, game, exclusions)
+    
 @bot.command()
 async def begone(ctx):
     if ctx.author.id == 571322376491368477:
