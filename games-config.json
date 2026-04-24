@@ -2,7 +2,7 @@
     "games": {
         "commander-roles": [
             {"name":"King", "power":"You start with 50 life and have a hidden helper the Knight\nWincon: No oppenents remaining", "rules":"Knight Assasin", "status":"Revealed"},
-            {"name":"Knight", "power":"You are in hidden service to your king prevent his death and if he dies avenge him\nWincon: No opponents remaining or avenge the kings death", "rules":"King Assasin"},
+            {"name":"Knight", "power":"You are in hidden service to your king prevent his death and if he dies avenge him\nWincon: No opponents remaining or avenge the kings death", "rules":"King Assasin", "status":"Hidden"},
             {"name":"Assasin", "power":"Wincon: Kill the King", "rules":"Knight King", "status":"Hidden"},
             {"name":"Sellsword", "power":"At the beginning of the game, start an auction where players bid life for your services, if your employer leaves the game you lose\nWincon: Same as your employer", "rules":"None", "status":"Revealed"}, 
             {"name":"Hunter", "power":"At the beginning of the game choose a role in play(don't show other players), this role is your target\nWincon: Eliminate your target", "rules":"None", "status":"Revealed"},
@@ -13,9 +13,9 @@
             {"name":"Villageidiot", "power":"Weaponised stupidity\nWincon: Die without triggering a wincon", "rules":"None", "status":"Hidden"},
             {"name":"Glasscannon", "power":"You start the game with 30 life, damage you deal is doubled\nWincon: No opponents remaining", "rules":"None","status":"Revealed"},
             {"name":"Warlord", "power":"Wincon: Deal 30 commander damage total to players", "rules":"None", "status":"Hidden"},
-            {"name":"Maskedman", "power":"At the beginning of the game reveal Maskedman and choose a role from the list that is not in the game. If the role is normally a revealed role play with it revealed\nWincon: Same as the role taken", "rules":"None", "status":"Revealed"},
+            {"name":"Maskedman", "power":"At the beginning of the game reveal Maskedman and choose a role from the list that is not in the game. If the role is normally a revealed role play with it revealed\nWincon: Same as the role taken", "rules":"options 3", "status":"Revealed"},
             {"name":"Chaos", "power":"When you die reveal Chaos and roll 6d6 you gain the result in life and keep 8 permenants", "rules":"None", "status":"Hidden"},
-            {"name":"Doppleganger", "power":"When you kill someone swap roles with the person you killed and heal life equal to half the health your victim had at the start of the turn.\nWincon: Swap roles with someone and achieve their wincon"}
+            {"name":"Doppleganger", "power":"When you kill someone swap roles with the person you killed and heal life equal to half the health your victim had at the start of the turn.\nWincon: Swap roles with someone and achieve their wincon", "rules":"None", "status":"Hidden"}
         ]
     }
 }
