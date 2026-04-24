@@ -41,7 +41,7 @@ async def open_queue(ctx):
 @bot.command()
 async def game_start(ctx, game, exclusions*):
     RRI.start_game(queue, game, exclusions)
-    
+
 @bot.command()
 async def begone(ctx):
     if ctx.author.id == 571322376491368477:
@@ -72,4 +72,3 @@ async def on_reaction_remove(reaction, user):
     print(queue)
 
 bot.run(BOT_KEY)
-

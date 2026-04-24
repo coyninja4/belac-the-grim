@@ -8,24 +8,23 @@ def start_game(queue, roles_config, exclusions=None):
     try:
         global roles
         global rules
-        global selected 
+        global selected
+        global roles_list
         roles_list = JSON["games"][roles_config]
         roles = list()
+        rules = {}
         for i in roles_list:
             roles.append(i['name'])
-        rules = {}
-        selected = []
+            if i['rules'] != "None":
+                rules[i['name']] = i['rules']
+            selected = []
     except KeyError:
         print(KeyError)
     except NameError:
         print(NameError)
-    except Exception as e:
-        print(e)
     role_randomize(len(queue), exclusions)
 
-start_game(5, "commander-roles")
-
-#adding secondary roles
+#adding rules from game-config
 #change this function to account for command style entries in the rules section of the json structure(ex.maskedman)
 def apply_rules(role):
     #list for removing roles if to many are added
@@ -41,7 +40,7 @@ def apply_rules(role):
                 pass
     return ruled
 
-def distribute(selected):
+#def distribute(selected):
 
 
 #display choices for maskedman (implement)
@@ -88,3 +87,5 @@ def role_randomize(num_players, exclusions):
         roles.remove(added)
     random.shuffle(selected)
     return selected
+
+start_game(set([1573, 6849, 3285, 7041, 5928]), "commander-roles")
