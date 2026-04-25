@@ -22,6 +22,8 @@ def start_game(queue, roles_config, exclusions=None):
         print(KeyError)
     except NameError:
         print(NameError)
+    except Exception as e:
+        print(e) 
     role_randomize(len(queue), exclusions)
 
 #adding rules from game-config
@@ -29,15 +31,27 @@ def start_game(queue, roles_config, exclusions=None):
 def apply_rules(role):
     #list for removing roles if to many are added
     ruled = []
+    command = None
     if role in rules:
         param = rules[role].split()
         for i in param:
-            selected.append(i)
-            ruled.append(i)
-            try:
-                roles.remove(i)
-            except:
+            if i == "add":
+                command = "add"
                 pass
+            if i == "option":
+                command = "option"
+                pass
+            else:
+                if command == "add":
+                    selected.append(i)
+                    ruled.append(i)
+                    try:
+                        roles.remove(i)
+                    except:
+                        pass
+                if command == "option":
+                    if len(roles) < i:
+            
     return ruled
 
 #def distribute(selected):
