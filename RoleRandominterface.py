@@ -24,7 +24,9 @@ def start_game(queue, roles_config, exclusions=None):
         print(NameError)
     except Exception as e:
         print(e) 
-    role_randomize(len(queue), exclusions)
+    roles_dict = {r["name"]: r for r in roles_list}
+    message_comp(role_randomize(queue, exclusions))
+
 
 #adding rules from game-config
 #change this function to account for command style entries in the rules section of the json structure(ex.maskedman)
@@ -51,20 +53,16 @@ def apply_rules(role):
                         pass
                 if command == "option":
                     if len(roles) < i:
-            
+                        roles.remove(role)
     return ruled
 
-#def distribute(selected):
-
-
-#display choices for maskedman (implement)
-# if i == "Maskedman":
-#     print(f"\nChoose new role:")
-#     for j in roles:
-#         print(j)
+def message_comp(distrib_dict):
+    global roles_list
+    for j in distrib_dict.values():
+        pass
 
 #main function
-def role_randomize(num_players, exclusions):
+def role_randomize(queue, exclusions):
     #handle exclusions
     try:
         for i in exclusions:
@@ -77,29 +75,24 @@ def role_randomize(num_players, exclusions):
             roles.remove(i)
     except:
         pass
-    #guarantee multiple roles for maskedman 
-    if num_players + 2 >= len(roles):
-        try:
-            roles.remove("Maskedman")
-        except:
-            pass
-    if num_players > len(roles):
+    if len(queue) > len(roles):
         print("Too many exclusions try again")
         return
     #adding roles up to number of players
-    while len(selected) < num_players:
+    for j in queue:
         x = random.randint(1, len(roles)) - 1
         added = roles[x]
         selected.append(added)
         ruled = apply_rules(added)
         random.shuffle(selected)
         #if rules goes over number players remove
-        if len(selected) > num_players:
+        if len(selected) > len(queue):
             selected.remove(added)
             for i in ruled:
                 selected.remove(i)
         roles.remove(added)
     random.shuffle(selected)
-    return selected
+    distrib_dict = {k:v for (k,v) in zip(queue, selected)}
+    return distrib_dict
 
 start_game(set([1573, 6849, 3285, 7041, 5928]), "commander-roles")

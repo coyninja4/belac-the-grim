@@ -33,14 +33,16 @@ async def test(ctx):
 async def open_queue(ctx):
     global queue
     queue = set()
-    msg = await ctx.send(f"React \"✅\" to join. Remove reaction to leave queue.\nType !game_start to start game.")
+    msg = await ctx.send(f"React \"✅\" to join. Remove reaction to leave queue.\nWhen ready type !game_start followed by the game.")
     global tracked_message_id
     tracked_message_id = msg.id
     await msg.add_reaction("✅")
 
 @bot.command()
-async def game_start(ctx, game, exclusions*):
-    RRI.start_game(queue, game, exclusions)
+async def game_start(ctx, *exclusions):
+    RRI.start_game(queue, exclusions)
+    print(f"game started with queue: {queue}")
+    queue = set()
 
 @bot.command()
 async def begone(ctx):
