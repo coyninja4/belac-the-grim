@@ -6,13 +6,16 @@ class DebugCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+    async def setup(self):
+        print("Here")
+
     @commands.command()
     async def sync(self, ctx):
         await ctx.send("sync slash commands")
 
     @commands.command()
     async def reload(self, ctx, extension: str):
-        await bot.reload_extension(extension)
+        await self.bot.load_extension(extension)
         await ctx.send(f'Reloaded {extension}')
     
     @commands.command()
