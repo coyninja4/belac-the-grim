@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 from discord.ext import commands
 import discord
 
-import DebugCog
+import Debug
 
 load_dotenv()
 
@@ -21,7 +21,7 @@ class Belac(commands.Bot):
     async def on_ready(self):
         print(f'We have logged in as {self.user}')
     async def setup_hook(self):
-        await bot.add_cog(DebugCog(bot))
+        await bot.add_cog(Debug.DebugCog(bot))
 
 bot = Belac()
 bot.run(BOT_KEY)
