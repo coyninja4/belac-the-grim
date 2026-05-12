@@ -9,6 +9,11 @@ class DebugCog(commands.Cog):
     @commands.command()
     async def sync(self, ctx):
         await ctx.send("sync slash commands")
+
+    @commands.command()
+    async def reload(self, ctx, extension: str):
+        await bot.reload_extension(extension)
+        await ctx.send(f'Reloaded {extension}')
     
     @commands.command()
     async def test(self, ctx):
