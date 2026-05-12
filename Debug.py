@@ -8,7 +8,7 @@ class DebugCog(commands.Cog):
 
     @commands.command()
     async def sync(self, ctx):
-        await ctx.send("Hello!")
+        await ctx.send("sync slash commands")
     
     @commands.command()
     async def test(self, ctx):
