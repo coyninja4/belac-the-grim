@@ -20,8 +20,14 @@ class Belac(commands.Bot):
 
     async def on_ready(self):
         print(f'We have logged in as {self.user}')
+    
     async def setup_hook(self):
         await bot.add_cog(Debug.DebugCog(bot))
+
+    @commands.command()
+    async def reload(self, ctx, extension: str):
+        await .reload_extension(extension)
+        await ctx.send(f'Reloaded {extension}')
 
 bot = Belac()
 bot.run(BOT_KEY)
