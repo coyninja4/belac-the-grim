@@ -11,6 +11,6 @@ class DebugCog(commands.Cog):
         await ctx.send("Hello!")
     
     @commands.command()
-    async def test(ctx):
+    async def test(self, ctx):
         await ctx.send('🤏 pp')
         print(f"{ctx.author}'s confidence shattered in {ctx.guild}, {ctx.channel}")
