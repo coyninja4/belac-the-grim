@@ -1,10 +1,7 @@
 import os
-import json
 from dotenv import load_dotenv
 from discord.ext import commands
 import discord
-
-import RoleRandomClass
 
 load_dotenv()
 
@@ -21,7 +18,8 @@ class Belac(commands.bot):
 
     async def on_ready(self):
         print(f'We have logged in as {self.user}')
-    async def setup_hook(self)
+#    async def setup_hook(self):
+
 
 bot = Belac()
 bot.run(BOT_KEY)
