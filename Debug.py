@@ -21,7 +21,7 @@ class DebugCog(commands.Cog):
         print(f"{ctx.author}'s confidence shattered in {ctx.guild}, {ctx.channel}")
 
     @commands.command()
-    async def begone(ctx):
+    async def begone(self, ctx):
         if ctx.author.id == 571322376491368477:
             await ctx.send('booo 👎')
             quit()
