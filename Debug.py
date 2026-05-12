@@ -6,7 +6,8 @@ class DebugCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    async def setup(self):
+    async def setup(bot):
+        await bot.add_cog(DebugCog(bot))
         print("Here")
 
     @commands.command()
@@ -15,7 +16,7 @@ class DebugCog(commands.Cog):
 
     @commands.command()
     async def reload(self, ctx, extension: str):
-        await self.bot.load_extension(extension)
+        await self.bot.reload_extension(extension)
         await ctx.send(f'Reloaded {extension}')
     
     @commands.command()
