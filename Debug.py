@@ -14,3 +14,11 @@ class DebugCog(commands.Cog):
     async def test(self, ctx):
         await ctx.send('🤏 pp')
         print(f"{ctx.author}'s confidence shattered in {ctx.guild}, {ctx.channel}")
+
+    @commands.command()
+    async def begone(ctx):
+        if ctx.author.id == 571322376491368477:
+            await ctx.send('booo 👎')
+            quit()
+        else:
+            await ctx.send(f'{ctx.author} is not worthy')
