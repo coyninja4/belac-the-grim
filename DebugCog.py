@@ -2,7 +2,7 @@ from discord import app_commands
 from discord.ext import commands
 import discord
 
-class MyCog(commands.Cog):
+class DebugCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
