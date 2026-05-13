@@ -22,7 +22,7 @@ class Belac(commands.Bot):
         print(f'We have logged in as {self.user}')
     
     async def setup_hook(self):
-        await bot.add_cog(Debug.DebugCog(bot))
+        await bot.load_extension("Debug")
 
 bot = Belac()
 bot.run(BOT_KEY)
