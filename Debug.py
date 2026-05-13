@@ -10,21 +10,21 @@ class DebugCog(commands.Cog):
         await bot.add_cog(DebugCog(bot))
         print("Here")
 
-    @commands.command()
+    @commands.hybrid_command()
     async def sync(self, ctx):
         await ctx.send("sync slash commands")
 
-    @commands.command()
+    @commands.hybrid_command()
     async def reload(self, ctx, extension: str):
         await self.bot.reload_extension(extension)
         await ctx.send(f'Reloaded {extension}')
     
-    @commands.command()
+    @commands.hybrid_command()
     async def test(self, ctx):
         await ctx.send('🤏 pp')
         print(f"{ctx.author}'s confidence shattered in {ctx.guild}, {ctx.channel}")
 
-    @commands.command()
+    @commands.hybrid_command()
     async def begone(self, ctx):
         if ctx.author.id == 571322376491368477:
             await ctx.send('booo 👎')
