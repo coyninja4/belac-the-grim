@@ -8,7 +8,7 @@ async def list_games(ctx):
     await ctx.send(string)
 
 @bot.command()
-async def openq(ctx, *, roles_config):
+async def openq(ctx, roles_config):
     global queue
     queue = set()
     msg = await ctx.send(f"React \"✅\" to join. Remove reaction to leave queue.\nWhen ready type !game_start followed by the game.")
