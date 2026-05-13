@@ -27,14 +27,6 @@ async def game_start(ctx, *exclusions):
     print(f"game started with queue: {players}")
     queue = set()
 
-@bot.command()
-async def begone(ctx):
-    if ctx.author.id == 571322376491368477:
-        await ctx.send('booo 👎')
-        quit()
-    else:
-        await ctx.send(f'{ctx.author} is not worthy')
-
 @bot.event
 async def on_reaction_add(reaction, user):
     global tracked_message_id
