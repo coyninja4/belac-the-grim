@@ -12,6 +12,7 @@ class DebugCog(commands.Cog):
 
     @commands.hybrid_command()
     async def sync(self, ctx):
+        discord.app_commands.CommandTree.sync()
         await ctx.send("sync slash commands")
 
     @commands.hybrid_command()
