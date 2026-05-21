@@ -21,7 +21,7 @@ class Belac(commands.Bot):
     
     async def setup_hook(self):
         await bot.load_extension("cog.Debug")
-        await bot.load_extension("cog.Game")
+        #await bot.load_extension("cog.Game")
 
 bot = Belac()
 bot.run(BOT_KEY)
