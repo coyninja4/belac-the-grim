@@ -1,13 +1,24 @@
-# @commands.app_command()
-# async def list_games(ctx):
-#     with open('games-config.json', 'r') as f:
-#         JSON = json.load(f)
-#     string = "Games list: \n"
-#     for i in JSON["games"]:
-#         string += f"{i} \n"
-#     await ctx.send(string)
+from discord import app_commands
+from discord.ext import commands
+import json
 
-# @bot.command()
+async def setup(bot):
+    await bot.add_cog(GameCog(bot))
+
+class GameCog(commands.Cog):
+    def __init__(self, bot):
+        self.bot = bot
+
+    @app_commands.command()
+    async def list_games(self, ctx):
+        with open('../games-config.json', 'r') as f:
+            JSON = json.load(f)
+        string = "Games list: \n"
+        for i in JSON["games"]:
+            string += f"{i} \n"
+        await ctx.send(string)
+
+# @commands.app_command()
 # async def openq(ctx, roles_config):
 #     global queue
 #     queue = set()
