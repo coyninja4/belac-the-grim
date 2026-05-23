@@ -8,7 +8,7 @@ async def setup(bot):
 class GameCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        game_queue = dict()
+        self.games = games
     
     @app_commands.command()
     async def list_games(self, interaction):
@@ -21,15 +21,12 @@ class GameCog(commands.Cog):
 
     @app_commands.command()
     async def openq(self, interaction):
-        global queue
-        queue = set()
+        self.games[interaction.channel_id] = set()
         msg = await interaction.response.send_message(f"React \"✅\" to join. Remove reaction to leave queue.\nWhen ready type !game_start followed by the game.")
-        global tracked_message_id
-        tracked_message_id = msg.id
         await msg.add_reaction("✅")
 
 # @bot.command()
-# async def game_start(ctx, *exclusions):
+# async def game_start(ctx, exclusions):
 #     players = list()
 #     global queue
 #     for i in queue:
