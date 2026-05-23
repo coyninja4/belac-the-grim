@@ -1,7 +1,7 @@
 import random
 import json
 
-class role_distri:
+class Role_distri:
     def __init__(self, roles_config, queue):
         with open('games-config.json', 'r') as f:
             self.JSON = json.load(f)
