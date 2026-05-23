@@ -10,9 +10,11 @@ class DebugCog(commands.Cog):
         self.bot = bot
 
     @commands.hybrid_command()
+    @commands.is_owner()
     async def sync(self, ctx):
-        await discord.app_commands.CommandTree.sync(self)
+        await self.bot.tree.sync(guild=ctx.guild)
         await ctx.send("sync slash commands")
+        print(f"{ctx.author} synced in {ctx.channel}")
 
     @commands.hybrid_command()
     async def reload(self, ctx, extension: str):
