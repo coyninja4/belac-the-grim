@@ -8,7 +8,8 @@ async def setup(bot):
 class GameCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-
+        game_queue = dict()
+    
     @app_commands.command()
     async def list_games(self, interaction):
         with open('games-config.json', 'r') as f:
