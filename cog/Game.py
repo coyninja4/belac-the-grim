@@ -22,29 +22,27 @@ class GameCog(commands.Cog):
 
     @app_commands.command()
     async def openq(self, interaction):
-        self.games[interaction.channel_id] = dict([(interaction.message.id, set())])
         await interaction.response.send_message(f"React \"✅\" to join. Remove reaction to leave queue.\nWhen ready type !game_start followed by the game.")
         msg = await interaction.original_response()
+        self.games[interaction.channel_id] = dict([(msg.id, set())])
         await msg.add_reaction("✅")
 
     @app_commands.command()
     async def game_start(self, interaction, roles_config: str, exclusions: str = ""):
         queue = self.games[interaction.channel_id]
-        print(queue)
         Game = Role_distri(roles_config, queue)
         roles = Game.role_randomize(exclusions)
-        for i in queue:
-            print(roles[i])
-            pass
+        for i in roles:
+            print(roles)
         print(f"game started with queue: {queue}")
         self.games.pop(interaction.channel_id)
         
 
-    @commands.Cog.listener
-    async def on_reaction_add(self, interaction, reaction, user):
-        if interaction.channel_id in self.games and user.id != 1488281701867065395:
-            queue = self.games[interaction.channel_id][interaction.message.id]
-            if interaction.message.id in self.games[interaction.channel_id]:
+    @commands.Cog.listener()
+    async def on_reaction_add(self, reaction, user):
+        if reaction.message.channel.id in self.games and user.id != 1488281701867065395:
+            queue = self.games[reaction.message.channel.id][reaction.message.id]
+            if reaction.message.id in self.games[reaction.message.channel.id]:
                 if reaction.emoji == "✅":
                     queue.add(user.name)
                 else:
