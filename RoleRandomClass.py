@@ -47,8 +47,6 @@ class role_distri:
     #handle exclusions
         try:
             for i in exclusions:
-                #capitalize input list
-                i = i.capitalize()
                 if i in self.rules:
                     param = self.rules[i].split()
                     for j in param:
