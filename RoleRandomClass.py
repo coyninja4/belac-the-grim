@@ -75,5 +75,3 @@ class role_distri:
         for i in distrib_dict:
             distrib_dict[i] = f"{distrib_dict[i]}: {self.roles_dict[distrib_dict[i]]["power"]}\nWincondition:{self.roles_dict[distrib_dict[i]]["Wincon"]}"
         return distrib_dict
-    
-    #def start_game(self, *exclusions):    
