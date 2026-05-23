@@ -24,7 +24,7 @@ class GameCog(commands.Cog):
     async def openq(self, interaction):
         await interaction.response.send_message(f"React \"✅\" to join. Remove reaction to leave queue.\nWhen ready type !game_start followed by the game.")
         msg = await interaction.original_response()
-        self.games[interaction.channel_id] = dict([(msg.id, set())])
+        self.games[interaction.channel_id] = set()
         await msg.add_reaction("✅")
 
     @app_commands.command()
@@ -41,13 +41,12 @@ class GameCog(commands.Cog):
     @commands.Cog.listener()
     async def on_reaction_add(self, reaction, user):
         if reaction.message.channel.id in self.games and user.id != 1488281701867065395:
-            queue = self.games[reaction.message.channel.id][reaction.message.id]
-            if reaction.message.id in self.games[reaction.message.channel.id]:
-                if reaction.emoji == "✅":
-                    queue.add(user.name)
-                else:
-                    pass
-            print(queue)
+            queue = self.games[reaction.message.channel.id]
+            if reaction.emoji == "✅":
+                queue.add(user.name)
+            else:
+                pass
+        print(queue)
 
     @commands.Cog.listener()
     async def on_reaction_remove(self, reaction, user):
