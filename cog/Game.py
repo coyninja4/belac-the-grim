@@ -23,12 +23,14 @@ class GameCog(commands.Cog):
     @app_commands.command()
     async def openq(self, interaction):
         self.games[interaction.channel_id] = set()
-        msg = await interaction.response.send_message(f"React \"✅\" to join. Remove reaction to leave queue.\nWhen ready type !game_start followed by the game.")
+        await interaction.response.send_message(f"React \"✅\" to join. Remove reaction to leave queue.\nWhen ready type !game_start followed by the game.")
+        msg = await interaction.original_response()
         await msg.add_reaction("✅")
 
     @app_commands.command()
-    async def game_start(self, interaction, roles_config: str, exclusions: str):
+    async def game_start(self, interaction, roles_config: str, exclusions: str = ""):
         queue = self.games[interaction.channel_id]
+        print(queue)
         Game = Role_distri(roles_config, queue)
         roles = Game.role_randomize(exclusions)
         for i in queue:
