@@ -49,13 +49,13 @@ class GameCog(commands.Cog):
                     pass
             print(queue)
 
-# @bot.event
-# async def on_reaction_remove(reaction, user):
-#     global tracked_message_id
-#     if reaction.message.id == tracked_message_id and user.id != 1488281701867065395:
-#         if reaction.emoji == "✅":
-#             try:
-#                 queue.remove(user.name)
-#             except(KeyError):
-#                 pass
-#     print(queue)
+    @commands.Cog.listener()
+    async def on_reaction_remove(self, reaction, user):
+        if reaction.message.channel.id in self.games and user.id != 1488281701867065395:
+            queue = self.games[reaction.message.channel.id][reaction.message.id]
+            if reaction.emoji == "✅":
+                try:
+                    queue.remove(user.name)
+                except(KeyError):
+                    pass
+            print(queue)
