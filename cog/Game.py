@@ -18,14 +18,14 @@ class GameCog(commands.Cog):
             string += f"{i} \n"
         await interaction.response.send_message(string)
 
-# @commands.app_command()
-# async def openq(ctx, roles_config):
-#     global queue
-#     queue = set()
-#     msg = await ctx.send(f"React \"✅\" to join. Remove reaction to leave queue.\nWhen ready type !game_start followed by the game.")
-#     global tracked_message_id
-#     tracked_message_id = msg.id
-#     await msg.add_reaction("✅")
+    @app_commands.command()
+    async def openq(self, interaction):
+        global queue
+        queue = set()
+        msg = await interaction.response.send_message(f"React \"✅\" to join. Remove reaction to leave queue.\nWhen ready type !game_start followed by the game.")
+        global tracked_message_id
+        tracked_message_id = msg.id
+        await msg.add_reaction("✅")
 
 # @bot.command()
 # async def game_start(ctx, *exclusions):
