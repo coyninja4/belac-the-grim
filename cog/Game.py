@@ -10,13 +10,13 @@ class GameCog(commands.Cog):
         self.bot = bot
 
     @app_commands.command()
-    async def list_games(self, ctx):
-        with open('../games-config.json', 'r') as f:
+    async def list_games(self, interaction):
+        with open('games-config.json', 'r') as f:
             JSON = json.load(f)
         string = "Games list: \n"
         for i in JSON["games"]:
             string += f"{i} \n"
-        await ctx.send(string)
+        await interaction.response.send_message(string)
 
 # @commands.app_command()
 # async def openq(ctx, roles_config):
