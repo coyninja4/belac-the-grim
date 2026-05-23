@@ -1,6 +1,7 @@
 from discord import app_commands
 from discord.ext import commands
 import json
+from Role_distri import Role_distri
 
 async def setup(bot):
     await bot.add_cog(GameCog(bot))
@@ -8,7 +9,7 @@ async def setup(bot):
 class GameCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.games = games
+        self.games = dict()
     
     @app_commands.command()
     async def list_games(self, interaction):
@@ -25,15 +26,16 @@ class GameCog(commands.Cog):
         msg = await interaction.response.send_message(f"React \"✅\" to join. Remove reaction to leave queue.\nWhen ready type !game_start followed by the game.")
         await msg.add_reaction("✅")
 
-# @bot.command()
-# async def game_start(ctx, exclusions):
-#     players = list()
-#     global queue
-#     for i in queue:
-#         # now that this is going in a class do it properly
-#         pass
-#     print(f"game started with queue: {players}")
-#     queue = set()
+    @app_commands.command()
+    async def game_start(self, interaction, roles_config: str, exclusions: str):
+        queue = self.games[interaction.channel_id]
+        Game = Role_distri(roles_config, queue)
+        roles = Game.role_randomize(exclusions)
+        for i in queue:
+            print(roles[i])
+            pass
+        print(f"game started with queue: {queue}")
+        
 
 # @bot.event
 # async def on_reaction_add(reaction, user):
