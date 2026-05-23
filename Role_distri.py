@@ -43,8 +43,9 @@ class Role_distri:
                         option = None
         return ruled
     
-    def role_randomize(self, *exclusions):
-    #handle exclusions
+    def role_randomize(self, exclusions):
+        #handle exclusions
+        exclusions = exclusions.split(",")
         try:
             for i in exclusions:
                 if i in self.rules:
