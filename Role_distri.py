@@ -66,11 +66,14 @@ class Role_distri:
             ruled = self.apply_rules(added)
             random.shuffle(self.selected)
             #if rules goes over number players remove
-            if len(self.selected) > len(self.queue):
-                self.selected.remove(added)
-                for i in ruled:
-                    self.selected.remove(i)
-            self.roles.remove(added)
+            try:
+                if len(self.selected) > len(self.queue):
+                    self.selected.remove(added)
+                    for i in ruled:
+                        self.selected.remove(i)
+                self.roles.remove(added)
+            except ValueError:
+                print(ValueError)
         random.shuffle(self.selected)
         distrib_dict = {k:v for (k,v) in zip(self.queue, self.selected)}
         for i in distrib_dict:
