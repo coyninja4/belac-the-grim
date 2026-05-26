@@ -2,6 +2,7 @@ from discord import app_commands
 from discord.ext import commands
 import json
 from Role_distri import Role_distri
+import asyncio
 
 async def setup(bot):
     await bot.add_cog(GameCog(bot))
@@ -36,6 +37,7 @@ class GameCog(commands.Cog):
         for i in roles.keys():
             user = await self.bot.fetch_user(i)
             await user.send(roles[i])
+            await asyncio.sleep(0.5)
         print(f"game started with queue: {queue}")
         await interaction.response.send_message("sus")
         self.games.pop(interaction.channel_id)
