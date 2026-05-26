@@ -1,14 +1,14 @@
 {
     "games": {
         "Commander Roles": [
-            {"name":"king", "power":"You start with 50 life and have a hidden helper the Knight", "Wincon": "No oppenents remaining", "rules":"add Knight Assasin", "status":"Revealed"},
-            {"name":"knight", "power":"You are in hidden service to your king prevent his death and if he dies avenge him", "Wincon": "No opponents remaining or avenge the kings death", "rules":"add King Assasin", "status":"Hidden"},
-            {"name":"assassin", "power": "None","Wincon": "Kill the King", "rules":"add Knight King", "status":"Hidden"},
+            {"name":"king", "power":"You start with 50 life and have a hidden helper the Knight", "Wincon": "No oppenents remaining", "rules":"add knight assasin", "status":"Revealed"},
+            {"name":"knight", "power":"You are in hidden service to your king prevent his death and if he dies avenge him", "Wincon": "No opponents remaining or avenge the kings death", "rules":"add king assasin", "status":"Hidden"},
+            {"name":"assassin", "power": "None","Wincon": "Kill the King", "rules":"add knight king", "status":"Hidden"},
             {"name":"sellsword", "power":"At the beginning of the game, start an auction where players bid life for your services, if your employer leaves the game you lose", "Wincon": "Same as your employer", "rules":"None", "status":"Revealed"}, 
             {"name":"hunter", "power":"At the beginning of the game choose a role in play(don't show other players), this role is your target", "Wincon": "Eliminate your target", "rules":"None", "status":"Revealed"},
             {"name":"bodyguard", "power":"At the beginning of the game, start an auction where players bid life for your services, if your employer leaves the game you lose, you CANNOT attack, You have the ability to tap your creatures to intercept creatures attacking your employer as well as being able to put a total of 10 of your life infront of your employer to reduce damage", "Wincon": "same as your employer", "rules":"None", "status":"Revealed"},
             {"name":"necromancer", "power":"One time per game when a player dies and no wincon is fulfilled you may reveal your role and replace their role with the Skelsword, the Skelsword retains 6 permenants and gains 30 life", "Wincon": "No opponents remaining", "rules":"None", "status":"Hidden"},
-            {"name":"twins", "power":"Use the power of friendship to defeat your foes", "Wincon": "No opponents remaining", "rules":"add Twin", "status":"Hidden"},
+            {"name":"twin", "power":"Use the power of friendship to defeat your foes", "Wincon": "No opponents remaining", "rules":"add twin", "status":"Hidden"},
             {"name":"seer", "power":"When you kill a player that has a hidden role reveal your role and guess the opponents role", "Wincon": "Guess a hidden role correctly", "rules":"None", "status":"Hidden"},
             {"name":"villageidiot", "power":"Weaponised stupidity", "Wincon": "Die without triggering a wincon", "rules":"None", "status":"Hidden"},
             {"name":"glasscannon", "power":"You start the game with 30 life, damage you deal is doubled", "Wincon": "No opponents remaining", "rules":"None","status":"Revealed"},
