@@ -39,7 +39,7 @@ class GameCog(commands.Cog):
             await user.send(roles[i])
             await asyncio.sleep(0.5)
         print(f"game started with queue: {queue}")
-        await interaction.response.send_message("sus")
+        await interaction.followup.send("sus")
         self.games.pop(interaction.channel_id)
         
 
