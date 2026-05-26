@@ -53,7 +53,7 @@ class GameCog(commands.Cog):
     @commands.Cog.listener()
     async def on_reaction_remove(self, reaction, user):
         if reaction.message.channel.id in self.games and user.id != 1488281701867065395:
-            queue = self.games[reaction.message.channel.id][reaction.message.id]
+            queue = self.games[reaction.message.channel.id]
             if reaction.emoji == "✅":
                 try:
                     queue.remove(user.name)
