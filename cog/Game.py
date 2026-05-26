@@ -29,6 +29,7 @@ class GameCog(commands.Cog):
 
     @app_commands.command()
     async def game_start(self, interaction, roles_config: str, exclusions: str = ""):
+        await interaction.response.defer()
         queue = self.games[interaction.channel_id]
         Game = Role_distri(roles_config, queue)
         roles = Game.role_randomize(exclusions)
