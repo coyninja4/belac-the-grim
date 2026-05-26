@@ -32,8 +32,9 @@ class GameCog(commands.Cog):
         queue = self.games[interaction.channel_id]
         Game = Role_distri(roles_config, queue)
         roles = Game.role_randomize(exclusions)
-        for i,j in roles:
-            print(i,j)
+        for i in roles.keys():
+            user = await self.bot.fetch_user(i)
+            await user.send(roles[i])
         print(f"game started with queue: {queue}")
         await interaction.response.send_message("sus")
         self.games.pop(interaction.channel_id)
