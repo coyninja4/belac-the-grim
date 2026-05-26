@@ -32,9 +32,10 @@ class GameCog(commands.Cog):
         queue = self.games[interaction.channel_id]
         Game = Role_distri(roles_config, queue)
         roles = Game.role_randomize(exclusions)
-        for i in roles:
-            print(roles)
+        for i,j in roles:
+            print(i,j)
         print(f"game started with queue: {queue}")
+        await interaction.response.send_message("sus")
         self.games.pop(interaction.channel_id)
         
 
@@ -43,7 +44,7 @@ class GameCog(commands.Cog):
         if reaction.message.channel.id in self.games and user.id != 1488281701867065395:
             queue = self.games[reaction.message.channel.id]
             if reaction.emoji == "✅":
-                queue.add(user.name)
+                queue.add(user.id)
             else:
                 pass
         print(queue)
