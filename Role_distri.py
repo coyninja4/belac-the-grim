@@ -72,10 +72,10 @@ class Role_distri:
                     for i in ruled:
                         self.selected.remove(i)
                 self.roles.remove(added)
-            except ValueError:
-                print(ValueError)
+            except Exception as e:
+                print(e)
         random.shuffle(self.selected)
         distrib_dict = {k:v for (k,v) in zip(self.queue, self.selected)}
         for i in distrib_dict:
             distrib_dict[i] = f"{distrib_dict[i]}: {self.roles_dict[distrib_dict[i]]["status"]} role\n{self.roles_dict[distrib_dict[i]]["power"]}\nWincondition: {self.roles_dict[distrib_dict[i]]["Wincon"]}"
-        return distrib_dict
+        return distrib_dict, self.selected
