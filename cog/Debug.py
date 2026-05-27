@@ -34,3 +34,17 @@ class DebugCog(commands.Cog):
             quit()
         else:
             await ctx.send(f'{ctx.author} is not worthy')
+
+    @commands.hybrid_command()
+    async def dmtest(self, ctx, id=None):
+        if id == None:
+            await ctx.author.send("this is a test")
+            print(f"tested {ctx.author}'s dm's")
+        elif id != None:
+            user = await self.bot.fetch_user(id)
+            await user.send("testing your dm's")
+            print(f"tested {user}'s dm's")
+        await ctx.send("message sent")
+        print(f"tested {ctx.author}'s dm's")
+
+    
