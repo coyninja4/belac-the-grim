@@ -38,7 +38,7 @@ class GameCog(commands.Cog):
             user = await self.bot.fetch_user(i)
             await user.send(roles[i])
             await asyncio.sleep(0.3)
-        print(f"game started with queue: {queue}")
+        print(f"game started with queue: {queue}, roles: {content}")
         distributed = ""
         for i in content:
             distributed = distributed + f", {i}"
