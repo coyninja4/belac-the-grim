@@ -38,9 +38,9 @@ class Role_distri:
                         except:
                             continue
                     if command == "option":
+                        #fix this
                         if len(self.roles) < i:
                             self.roles.remove(role)
-                        option = None
         return ruled
     
     def role_randomize(self, exclusions):
