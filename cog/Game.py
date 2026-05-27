@@ -39,6 +39,9 @@ class GameCog(commands.Cog):
             await user.send(roles[i])
             await asyncio.sleep(0.3)
         print(f"game started with queue: {queue}")
+        distributed = ""
+        for i in content:
+            distributed = distributed + f", {i}"
         await interaction.followup.send(content)
         self.games.pop(interaction.channel_id)
         
