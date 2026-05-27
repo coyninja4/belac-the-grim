@@ -13,7 +13,7 @@
             {"name":"villageidiot", "power":"Weaponised stupidity", "Wincon": "Die without triggering a wincon", "rules":"None", "status":"Hidden"},
             {"name":"glasscannon", "power":"You start the game with 30 life, damage you deal is doubled", "Wincon": "No opponents remaining", "rules":"None","status":"Revealed"},
             {"name":"warlord", "power": "None", "Wincon": "Deal 30 commander damage total to players", "rules":"None", "status":"Hidden"},
-            {"name":"maskedman", "power":"At the beginning of the game reveal Maskedman and choose a role from the list that is not in the game. If the role is normally a revealed role play with it revealed", "Wincon": "Same as the role taken", "rules":"options 3", "status":"Revealed"},
+            {"name":"maskedman", "power":"At the beginning of the game reveal Maskedman and choose a role from the list that is not in the game. If the role is normally a revealed role play with it revealed", "Wincon": "Same as the role taken", "rules":"option 3", "status":"Revealed"},
             {"name":"chaos", "power":"When you die reveal Chaos and roll 6d6 you gain the result in life and keep 8 permenants", "Wincon": "No opponents remaining", "rules":"None", "status":"Hidden"},
             {"name":"doppleganger", "power":"When you kill someone swap roles with the person you killed and heal life equal to half the health your victim had at the start of the turn", "Wincon": "Swap roles with someone and achieve their wincon", "rules":"None", "status":"Hidden"}
         ]
