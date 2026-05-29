@@ -42,7 +42,7 @@ class GameCog(commands.Cog):
         distributed = ""
         for i in content:
             distributed = distributed + f", {i}"
-        await interaction.followup.send(content)
+        await interaction.followup.send(distributed)
         self.games.pop(interaction.channel_id)
         
 
