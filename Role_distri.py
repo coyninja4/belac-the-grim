@@ -26,7 +26,7 @@ class Role_distri:
                 if i == "add":
                     command = "add"
                     continue
-                if i == "option":
+                elif i == "option":
                     command = "option"
                     continue
                 else:
