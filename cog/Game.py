@@ -54,7 +54,9 @@ class GameCog(commands.Cog):
                 queue.add(user.id)
             else:
                 pass
-        print(queue)
+            print(queue)
+        else:
+            print('error')
 
     @commands.Cog.listener()
     async def on_reaction_remove(self, reaction, user):

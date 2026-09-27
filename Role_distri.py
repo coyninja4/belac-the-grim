@@ -38,7 +38,7 @@ class Role_distri:
                         except:
                             continue
                     if command == "option":
-                        #fix this
+                        i = int(i)
                         if len(self.roles) < i:
                             self.roles.remove(role)
         return ruled
@@ -48,6 +48,7 @@ class Role_distri:
         exclusions = exclusions.split(",")
         try:
             for i in exclusions:
+                print(i)
                 if i in self.rules:
                     param = self.rules[i].split()
                     for j in param:
