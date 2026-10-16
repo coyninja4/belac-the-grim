@@ -17,6 +17,7 @@ class DebugCog(commands.Cog):
         print(f"{ctx.author} synced in {ctx.channel}")
 
     @commands.hybrid_command()
+    @commands.is_owner()
     async def reload(self, ctx, extension: str):
         await self.bot.reload_extension(f"cog.{extension}")
         await ctx.send(f'Reloaded {extension}')
